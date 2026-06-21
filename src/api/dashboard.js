@@ -48,3 +48,41 @@ export const getUserGrowth = async (period = 'month') => {
   const response = await request.get('/dashboard/user-growth', { period });
   return response.data;
 };
+
+/**
+ * 获取营地资源总览
+ * @returns {Promise<Object>} 营地资源数据
+ */
+export const getCampResources = async () => {
+  const response = await request.get('/camp/resources');
+  return response.data;
+};
+
+/**
+ * 获取资源库存趋势
+ * @param {string} period - 时间周期 (week, month, quarter)
+ * @returns {Promise<Array<Object>>} 库存趋势数据
+ */
+export const getInventoryTrend = async (period = 'week') => {
+  const response = await request.get('/camp/inventory-trend', { period });
+  return response.data;
+};
+
+/**
+ * 获取主要消耗任务
+ * @param {number} limit - 数量限制
+ * @returns {Promise<Array<Object>>} 消耗任务列表
+ */
+export const getConsumptionTasks = async (limit = 5) => {
+  const response = await request.get('/camp/consumption-tasks', { limit });
+  return response.data;
+};
+
+/**
+ * 获取即将断供预警
+ * @returns {Promise<Array<Object>>} 断供预警列表
+ */
+export const getSupplyWarnings = async () => {
+  const response = await request.get('/camp/supply-warnings');
+  return response.data;
+};
